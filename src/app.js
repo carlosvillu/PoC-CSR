@@ -1,4 +1,7 @@
 /* eslint no-console:0 */
+if (!window.Promise) window.Promise = require('promise-polyfill')
+import 'unfetch/polyfill'
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 
