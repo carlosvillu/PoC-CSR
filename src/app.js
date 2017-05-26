@@ -9,6 +9,7 @@ import routes from './routes'
 import browserHistory from 'react-router/lib/browserHistory'
 
 import App from './components/App'
+import './app.scss'
 
 const render = Component => match({ routes, history: browserHistory }, (error, redirectLocation, renderProps) => {
   if (error) { console.error({error}) }

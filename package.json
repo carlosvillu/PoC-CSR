@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "suistudio-webpack build -C",
+    "build": "NODE_ENV=production suistudio-webpack build -C",
     "co": "npm run lint:js && git commit",
+    "predeploy": "npm run build",
     "deploy": "firebase deploy",
-    "lint:js": "linting-rules js",
+    "lint:js": "linting-rules js --ignore-pattern public",
     "phoenix": "rm -Rf node_modules && npm i --cache-min=999999",
     "start": "suistudio-webpack dev"
   },
@@ -15,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@schibstedspain/ddd-react-redux": "1.2.0",
+    "@schibstedspain/ddd-react-redux": "1",
     "prop-types": "15.5.10",
     "react": "15.5.4",
     "react-dom": "15.5.4",
@@ -24,8 +25,8 @@
     "recompose": "0.23.4"
   },
   "devDependencies": {
-    "@schibstedspain/linting-rules": "1.5.0",
-    "@schibstedspain/suistudio-webpack": "2.14.0"
+    "@schibstedspain/linting-rules": "1",
+    "@schibstedspain/suistudio-webpack": "2"
   },
   "suistudio-webpack": {
     "vendor": [
