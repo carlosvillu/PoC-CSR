@@ -17,6 +17,7 @@ const fetch = ({component, query}) =>
         .then(resp => resp.json())
         .then(people => component.props.setPeople(people))
         .then(window.localStorage.setItem.bind(window.localStorage, 'lastSearch', `${END_POINT}${qs(query)}`))
+        .catch(e => console.log(e))
 
 export default compose(
   withState('people', 'setPeople'),
