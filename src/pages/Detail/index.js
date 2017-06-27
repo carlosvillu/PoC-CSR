@@ -1,4 +1,5 @@
 import Detail from './component'
+import axios from 'axios'
 
 import withState from 'recompose/withState'
 import withProps from 'recompose/withProps'
@@ -14,10 +15,9 @@ export default compose(
   withState('person', 'setPerson'),
   lifecycle({
     componentDidMount () {
-      window.fetch(`https://us-central1-poc-csr.cloudfunctions.net/people?id=${this.props.params.id}`)
-        .then(resp => resp.json())
-        .then(people => {
-          const [person] = people
+      axios.get(`https://us-central1-poc-csr.cloudfunctions.net/people?id=${this.props.params.id}`)
+        .then(resp => {
+          const [person] = resp.data
           this.props.setPerson(person)
         })
     }

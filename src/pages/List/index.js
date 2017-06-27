@@ -2,6 +2,7 @@
 /* eslint operator-linebreak:0 */
 
 import List from './component'
+import axios from 'axios'
 
 import withState from 'recompose/withState'
 import withProps from 'recompose/withProps'
@@ -13,11 +14,12 @@ const qs = ({id, tag}) => id !== undefined ? `?id=${id}` :
                           tag !== undefined ? `?tag=${tag}` :
                           ''
 const fetch = ({component, query}) =>
-  window.fetch(`${END_POINT}${qs(query)}`)
-        .then(resp => resp.json())
-        .then(people => component.props.setPeople(people))
-        .then(window.localStorage.setItem.bind(window.localStorage, 'lastSearch', `${END_POINT}${qs(query)}`))
-        .catch(e => console.log(e))
+  axios.get(`${END_POINT}${qs(query)}`)
+    .then(resp => {
+      const people = resp.data
+      component.props.setPeople(people)
+      window.localStorage.setItem('lastSearch', `${END_POINT}${qs(query)}`)
+    })
 
 export default compose(
   withState('people', 'setPeople'),
