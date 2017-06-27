@@ -1,4 +1,5 @@
 import Home from './component'
+import axios from 'axios'
 
 import withState from 'recompose/withState'
 import lifecycle from 'recompose/lifecycle'
@@ -8,9 +9,10 @@ export default compose(
   withState('people', 'setPeople'),
   lifecycle({
     componentDidMount () {
-      window.fetch(window.localStorage.lastSearch)
-        .then(resp => resp.json())
-        .then(people => this.props.setPeople(people))
+      axios.get(window.localStorage.lastSearch)
+        .then(resp => {
+          this.props.setPeople(resp.data)
+        })
     }
   })
 )(Home)
