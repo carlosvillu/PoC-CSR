@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV=production suistudio-webpack build -C",
+    "build": "NODE_ENV=production sui-bundler build -C",
     "co": "npm run lint:js && git commit",
     "predeploy": "npm run build",
     "deploy": "firebase deploy",
-    "lint:js": "linting-rules js --ignore-pattern public",
+    "lint:js": "sui-lint js --ignore-pattern public --fix",
     "phoenix": "rm -Rf node_modules && npm i --cache-min=999999",
-    "start": "suistudio-webpack dev"
+    "start": "sui-bundler dev"
   },
   "keywords": [],
   "author": "",
@@ -26,12 +26,14 @@
     "recompose": "0.23.4"
   },
   "devDependencies": {
-    "@schibstedspain/linting-rules": "1",
-    "@schibstedspain/suistudio-webpack": "3"
+    "@s-ui/bundler": "3",
+    "@s-ui/lint": "2"
   },
   "suistudio-webpack": {
+    "offline": true,
     "vendor": [
-      "@schibstedspain/ddd-react-redux",
+      "axios",
+      "babel-polyfill",
       "react",
       "react-dom",
       "react-router",
@@ -40,8 +42,8 @@
   },
   "eslintConfig": {
     "extends": [
-      "./node_modules/@schibstedspain/linting-rules/eslintrc.js"
+      "./node_modules/@s-ui/lint/eslintrc.js"
     ]
   },
-  "sasslintConfig": "./node_modules/@schibstedspain/linting-rules/sass-lint.yml"
+  "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml"
 }
