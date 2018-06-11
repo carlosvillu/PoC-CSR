@@ -8,11 +8,10 @@ import compose from 'recompose/compose'
 export default compose(
   withState('people', 'setPeople'),
   lifecycle({
-    componentDidMount () {
-      axios.get(window.localStorage.lastSearch)
-        .then(resp => {
-          this.props.setPeople(resp.data)
-        })
+    componentDidMount() {
+      axios.get(window.localStorage.lastSearch).then(resp => {
+        this.props.setPeople(resp.data)
+      })
     }
   })
 )(Home)

@@ -7,11 +7,11 @@ import Clock from './component'
 export default compose(
   withState('timestamp', 'setTimeStamp', 0),
   lifecycle({
-    componentDidMount () {
+    componentDidMount() {
       const {timestamp, setTimeStamp} = this.props
       setTimeout(() => setTimeStamp(timestamp + 1), 1000)
     },
-    componentWillReceiveProps ({timestamp, setTimeStamp}) {
+    componentWillReceiveProps({timestamp, setTimeStamp}) {
       setTimeout(() => setTimeStamp(timestamp + 1), 1000)
     }
   })

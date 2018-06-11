@@ -11,22 +11,35 @@ import PeopleTable from '../../components/PeopleTable'
 
 const List = ({people, canonical}) => {
   return (
-    <div className='List'>
+    <div className="List">
       <Helmet>
         <title>Las 5 personas de la prueba de indexación de JS</title>
-        <meta name='description' content='Estas son las 5 personas involucradas en la prueba de indexación de JS o al menos algunos de ellos lo están y otros sólo están de relleno.' />
-        <link rel='canonical' href={canonical} />
+        <meta
+          name="description"
+          content="Estas son las 5 personas involucradas en la prueba de indexación de JS o al menos algunos de ellos lo están y otros sólo están de relleno."
+        />
+        <link rel="canonical" href={canonical} />
       </Helmet>
       <h1>List</h1>
       <h2>Breadcrumb</h2>
-      <Link to='/'>Prueba Indexación JS (a home)</Link>
+      <Link to="/">Prueba Indexación JS (a home)</Link>
       <p>Personas de la prueba</p>
       <h2>Filters</h2>
-      <Link className='List-Filter' to='/people'>All</Link>
-      <Link className='List-Filter' to='/people?tag=developer'>Developers</Link>
-      <Link className='List-Filter' to='/people?tag=seo'>SEO</Link>
-      <Link className='List-Filter' to='/people?tag=moreno'>Morenos</Link>
-      <Link className='List-Filter' to='/people?tag=castaño'>Castaños</Link>
+      <Link className="List-Filter" to="/people">
+        All
+      </Link>
+      <Link className="List-Filter" to="/people?tag=developer">
+        Developers
+      </Link>
+      <Link className="List-Filter" to="/people?tag=seo">
+        SEO
+      </Link>
+      <Link className="List-Filter" to="/people?tag=moreno">
+        Morenos
+      </Link>
+      <Link className="List-Filter" to="/people?tag=castaño">
+        Castaños
+      </Link>
       <h2>Personas</h2>
       <PeopleTable people={people} />
     </div>
@@ -35,12 +48,14 @@ const List = ({people, canonical}) => {
 
 List.displayName = 'List'
 List.propTypes = {
-  people: PropTypes.arrayOf(PropTypes.shape({
-    avatar: PropTypes.string,
-    bio: PropTypes.string,
-    id: PropTypes.number,
-    tags: PropTypes.arrayOf(PropTypes.string)
-  })),
+  people: PropTypes.arrayOf(
+    PropTypes.shape({
+      avatar: PropTypes.string,
+      bio: PropTypes.string,
+      id: PropTypes.number,
+      tags: PropTypes.arrayOf(PropTypes.string)
+    })
+  ),
   canonical: PropTypes.string
 }
 
